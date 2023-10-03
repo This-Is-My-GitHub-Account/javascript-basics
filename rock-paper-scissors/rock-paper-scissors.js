@@ -4,9 +4,9 @@ choiceMap.set('paper', 2);
 choiceMap.set('scissors', 3);
 
 function getComputerChoice() {
-    let num = floor(Math.random() * 3);
+    let num = Math.floor(Math.random() * 3);
     if (num === 2) {
-        return "rock";
+        return 'rock';
     } else if (num === 1) {
         return 'paper';
     } else {
@@ -18,9 +18,9 @@ let playerWinCount = 0;
 
 function playRound(computerSelection, playerSelection) {
     if (choiceMap.get(computerSelection) % 3 > choiceMap.get(playerSelection.toLowerCase()) % 3) {
-        playerWinCount++;
         return `You lose! ${computerSelection} beats ${playerSelection}`;
     } else {
+        playerWinCount++;
         return `You Win!`;
     }
 }   
@@ -31,9 +31,10 @@ function game() {
         let playerSelection = prompt('Rock, Paper, Scissors?');
         console.log(playRound(computerSelection, playerSelection));
     }    
-    if (playerWinCount > 2) {
+    if (playerWinCount < 3) {
         console.log('Computer wins, machine has once again bested man.');
     } else {
         console.log('Man wins, there is still hope for humanity.');
     }
 }
+game();
